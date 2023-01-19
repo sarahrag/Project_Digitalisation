@@ -1,2 +1,5 @@
-/MQTT_Stuff/results/*
-/MQTT_Stuff/certificates/*
+/MQTT_Stuff/results/results.csv
+/MQTT_Stuff/certificates/certificate.pem.crt
+/MQTT_Stuff/certificates/private.pem.key
+/MQTT_Stuff/certificates/public.pem.key
+/MQTT_Stuff/certificates/root.pem
