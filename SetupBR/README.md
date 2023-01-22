@@ -31,7 +31,7 @@ any IPv6 address. Two A8 nodes are used for this.
    connect to the grenoble site again via ssh. Check which nodes are present by
    typing "iotlab-experiment get -d". There should be two nodes present. The
    first one is the border router. Connect to the second one via
-   "ssh root@node-a8-<nodeNumber>.
+   "ssh root@node-a8-NODENUMBER.
 
 6. Run the script "./A8/onHost.sh". This will flash the binaries for the host
    node, reset the node and open a miniterm connection to the M3 of the A8 node.
