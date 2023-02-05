@@ -3,4 +3,4 @@ In this folder these individual certificates should be added:
 - certificate.pem.crt
 - private.pem.key
 - public.pem.key
-- rrot.pem
+- root.pem
