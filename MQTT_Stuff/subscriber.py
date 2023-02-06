@@ -22,7 +22,7 @@ csv_header = [TIMESTAMP, LUX]
 
 DATAPOINTS_SHOWED = 30
 
-SHOW_PLOT = False
+SHOW_PLOT = True
 
 
 def writeIn(path, payload_dict, LUX_Identifier):
