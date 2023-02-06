@@ -10,7 +10,8 @@ for AWS IoT. You have to add these to the certificates folder, with the followin
 - `public.pem.key`
 - `root.pem`
 
-To start the subscriber just type the following into a terminal:
+To start the subscriber you have to start a development environment like PyCharm and run code there. If you want to run
+it in a terminal, the plotting has to be disabled, by setting `SHOW_PLOT` in line 25 to `False`. After that you can also run:
 
 `python3 subscriber.py`
 

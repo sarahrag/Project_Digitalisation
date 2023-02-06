@@ -33,7 +33,7 @@ connect_future.result()
 print(f'{CLIENT_ID} is connected!')
 
 for i in range(20):
-    MESSAGE = {'Lux_Value': random.uniform(19.0, 21.0), 'timestamp': datetime.now().strftime("%H:%M:%S")}
+    MESSAGE = {"Lux_ValueFake": random.uniform(19.0, 21.0), "timestamp": datetime.now().strftime("%H:%M:%S")}
     mqtt_connection.publish(
         topic=TOPIC,
         payload=str(json.dumps(MESSAGE)),
@@ -41,7 +41,19 @@ for i in range(20):
     )
     print('Message published')
     print(json.dumps(MESSAGE))
-    time.sleep(2)
+    time.sleep(1)
+
+    MESSAGE = {"Lux_ValueReal": random.uniform(19.0, 21.0), "timestamp": datetime.now().strftime("%H:%M:%S")}
+    mqtt_connection.publish(
+        topic=TOPIC,
+        payload=str(json.dumps(MESSAGE)),
+        qos=mqtt.QoS.AT_LEAST_ONCE
+    )
+    print('Message published')
+    print(json.dumps(MESSAGE))
+    time.sleep(1)
+
+
 
 disconnect_future = mqtt_connection.disconnect()
 disconnect_future.result()
