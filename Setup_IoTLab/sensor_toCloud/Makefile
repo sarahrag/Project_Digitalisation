@@ -26,6 +26,10 @@ USEMODULE += ztimer_msec
 USEMODULE += ztimer_sec
 USEMODULE += ztimer_usec
 USEMODULE += printf_float
+
+USEMODULE += isl29020
+USEMODULE += lps331ap
+USEMODULE += lsm303dlhc
 # Allow for env-var-based override of the nodes name (EMCUTE_ID)
 ifneq (,$(EMCUTE_ID))
   CFLAGS += -DEMCUTE_ID=\"$(EMCUTE_ID)\"
