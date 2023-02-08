@@ -7,8 +7,6 @@ The project architecture is as follows:
 ## Project Setup
 
 ### AWS IoT Core Setup
-If an AWS IoT Core Thing with certificates and policies already exists, this can be skipped.
-
 In this Project the AWS IoT Core MQTT Broker is used, so it has to be setted up as following:
 
 1. In AWS IoT Core create a Thing
