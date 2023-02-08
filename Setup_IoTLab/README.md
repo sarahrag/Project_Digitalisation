@@ -30,17 +30,20 @@ sure you have cloned the whole GitHub repository to your local machine.
    `./A8/onBR.sh`. The script will flash the binaries and reset the node. It 
    will extract the IPv6 prefix and run a script in order to start the border 
    router. After it is done your terminal output should look like this:
-   `cc -O3 -Wall ethos.c -o ethos
-    net.ipv6.conf.tap0.forwarding = 1
-    net.ipv6.conf.tap0.accept_ra = 0
-    ----> ethos: sending hello.
-    ----> ethos: activating serial pass through.
-    ----> ethos: hello reply received
-    ----> ethos: hello reply received`
-    
+   ```
+   cc -O3 -Wall ethos.c -o ethos
+   net.ipv6.conf.tap0.forwarding = 1
+   net.ipv6.conf.tap0.accept_ra = 0
+   ----> ethos: sending hello.
+   ----> ethos: activating serial pass through.
+   ----> ethos: hello reply received
+   ----> ethos: hello reply received
+   ```
+   
 5. Now you can setup the RSMB. Open a new terminal and connect to the grenoble 
    site again via ssh. Check which nodes are present by typing 
-   `iotlab-experiment get -d`. There should be four nodes present.
+   ```
+   iotlab-experiment get -d`. There should be four nodes present.
    {
     "0": [
         "a8-103.grenoble.iot-lab.info",
@@ -48,7 +51,8 @@ sure you have cloned the whole GitHub repository to your local machine.
         "a8-105.grenoble.iot-lab.info",
         "a8-106.grenoble.iot-lab.info"
     ]
-   }`
+   }
+   ```
    The first one is the border router. Connect to the second one via 
    `ssh root@node-a8-NODENUMBER`.
 
@@ -60,6 +64,7 @@ sure you have cloned the whole GitHub repository to your local machine.
 7. Run the command "broker_mqtts A8/config.conf". This will start your broker
    which listens for UDP MQTT-SN messages on port 1885 and for TCP MQTT on
    port 1886.
+   ```
    root@node-a8-104:~# broker_mqtts A8/config.conf 
    20230208 210934.062 CWNAN9999I Really Small Message Broker
    20230208 210934.067 CWNAN9998I Part of Project Mosquitto in Eclipse
@@ -69,25 +74,29 @@ sure you have cloned the whole GitHub repository to your local machine.
    20230208 210934.077 CWNAN0054I Features included: bridge MQTTS 
    20230208 210934.078 CWNAN9993I Authors: Ian Craggs (icraggs@uk.ibm.com), Nicholas O'Leary
    20230208 210934.083 CWNAN0300I MQTT-S protocol starting, listening on port 1885
-   20230208 210934.085 CWNAN0014I MQTT protocol starting, listening on port 1886`
-
+   20230208 210934.085 CWNAN0014I MQTT protocol starting, listening on port 1886
+   ```
+   
 8. Edit line 27 in the ownGateway.py file on your local machine to use the IPv6 address from 
    step 6. Also make sure to provide your personal AWS IoT Core credentials and the path to 
    the certificate files on your machine. Start the gateway with `python3 ownGateway.py`. 
    On the terminal where your RSMB runs the output should now like like this:
-   `20230208 211328.649 5 gateway <- CONNECT
-    20230208 211328.651 CWNAN0033I Connection attempt to listener 1886 received from client 
-    gateway on address 2a02:908:111:2420:10ee:a7f9:8cc8:14e:36718
-    20230208 211328.652 5 gateway -> CONNACK rc: 0 (0)
-    20230208 211328.682 5 gateway <- SUBSCRIBE msgid: 1
-    20230208 211328.683 5 gateway -> SUBACK msgid: 1 (0)`
+   ```
+   20230208 211328.649 5 gateway <- CONNECT
+   20230208 211328.651 CWNAN0033I Connection attempt to listener 1886 received from client 
+   gateway on address 2a02:908:111:2420:10ee:a7f9:8cc8:14e:36718
+   20230208 211328.652 5 gateway -> CONNACK rc: 0 (0)
+   20230208 211328.682 5 gateway <- SUBSCRIBE msgid: 1
+   20230208 211328.683 5 gateway -> SUBACK msgid: 1 (0)
+   ```
+   while the output of the terminal where the gateway script runs looks like this:
     
-    while the output of the terminal where the gateway script runs looks like this:
-    
-    `sys.version_info(major=3, minor=10, micro=6, releaselevel='final', serial=0)
-    test_client is connected!
-    connecting to broker  2001:660:5307:3000::68
-    subscribing to  sensorData`
+   ```
+   sys.version_info(major=3, minor=10, micro=6, releaselevel='final', serial=0)
+   test_client is connected!
+   connecting to broker  2001:660:5307:3000::68
+   subscribing to  sensorData
+   ```
 
 8. Open a new terminal and connect to the grenoble frontend via ssh. And edit
    the main.c file in A8/riot/RIOT/examples/sensor_toCloud. Change the IPv6
@@ -105,13 +114,15 @@ sure you have cloned the whole GitHub repository to your local machine.
 11. Use command `iotlab_reset` to restart the node and wait a bit until you see 
     messages being received in the gateway window as shown below. You should also
     see traffic going through the RSMB.
-    `received message = {"Lux_ValueFake": 29.10,  "timestamp": "00:00:18"}
+    ```
+    received message = {"Lux_ValueFake": 29.10,  "timestamp": "00:00:18"}
     received message = {"AccelY": -300, "timestamp": "00:00:18"}
     received message = {"Lux_ValueFake": 30.73,  "timestamp": "00:00:20"}
     received message = {"AccelY": -300, "timestamp": "00:00:20"}
     received message = {"Lux_ValueFake": 30.57,  "timestamp": "00:00:22"}
     received message = {"AccelY": -300, "timestamp": "00:00:22"}
     received message = {"Lux_ValueFake": 28.98,  "timestamp": "00:00:23"}
-    received message = {"AccelY": -308, "timestamp": "00:00:23"}`
+    received message = {"AccelY": -308, "timestamp": "00:00:23"}
+    ```
     
 Congratulations, you are now sending fake and real data to you AWS IoT core instance!
