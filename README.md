@@ -1,8 +1,13 @@
 # Project Digitalisation: IoT - From the Microcontroller to the Cloud
 
-## Requirements
+## Project architecture
+The project architecture is as follows:
+![IoT-Project-Planned drawio-3](https://user-images.githubusercontent.com/49904886/217534647-0d5993a8-e2fb-4f08-be31-62cb66850bf4.png)
+
+## Project Setup
 
 ### AWS IoT Core Setup
+If an AWS IoT Core Thing with certificates and policies already exists, this can be skipped.
 
 In this Project the AWS IoT Core MQTT Broker is used, so it has to be setted up as following:
 
@@ -20,13 +25,10 @@ In this Project the AWS IoT Core MQTT Broker is used, so it has to be setted up 
      * `root.pem` (Root CA)
 2. Under *Settings -> Device* data endpoint in AWS IoT Core the endpoint that is used for MQTT Clients is located. Copy the endpoint, because it has to be pasted in some files
 
-
-## Project architecture
-The project architecture is as follows:
-![IoT-Project-Planned drawio-3](https://user-images.githubusercontent.com/49904886/217534647-0d5993a8-e2fb-4f08-be31-62cb66850bf4.png)
-
+### Setup Fit-IoT Lab environment
 The first part of the project is the setup of the Fit-IoT Lab environment, including the border router, the mosquitto RSMB, the application to send real and fake sensor data with the MQTT-SN Client and the selfmade gateway.
 For this part follow the instructions in the Readme.md in [Setup IoT Lab](https://github.com/sarahrag/Project_Digitalisation/tree/main/Setup_IoTLab)
 
-The second part of the project is the subscribing MQTT Client to receive the send data directly from AWS IoT Core.
+### Setup subscriber
+The second part of the project is the subscribing MQTT Client to receive the send data directly from AWS IoT Core, save them and (optionally) visualize them.
 For this part follow the instructions in the Readme.md in [Subscriber](https://github.com/sarahrag/Project_Digitalisation/tree/main/MQTT_Stuff)
