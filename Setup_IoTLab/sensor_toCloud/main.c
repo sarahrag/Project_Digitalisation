@@ -113,40 +113,39 @@ int main(void)
         lenReal = strlen(messageReal);
 
         if(firstRun)
-        {
+        {   //connect only it first run
             if(emcute_con(&gw, true, topic, messageFake, lenFake, 0) != EMCUTE_OK)
             {
                 printf("unable to connect\n");
                 break;
             }
-            ztimer_sleep(ZTIMER_MSEC, 2000);
+            //ztimer_sleep(ZTIMER_MSEC, 2000);
             firstRun = false;
         }
-        else
+
+        emcute_topic_t t;
+        unsigned flags = EMCUTE_QOS_0;
+        t.name = topic;
+        if (emcute_reg(&t) != EMCUTE_OK)
         {
-            emcute_topic_t t;
-            unsigned flags = EMCUTE_QOS_0;
-            t.name = topic;
-            if (emcute_reg(&t) != EMCUTE_OK)
-            {
-                puts("error: unable to obtain topic ID");
-                break;
-            }
-
-            if(emcute_pub(&t, messageFake, lenFake, flags) != EMCUTE_OK)
-            {
-                printf("error: unable to publish data on topic\n");
-                break;
-            }
-
-            ztimer_sleep(ZTIMER_MSEC, 250);
-
-            if(emcute_pub(&t, messageReal, lenReal, flags) != EMCUTE_OK)
-            {
-                printf("error: unable to publish data on topic\n");
-                break;
-            }
+            puts("error: unable to obtain topic ID");
+            break;
         }
+
+        if(emcute_pub(&t, messageFake, lenFake, flags) != EMCUTE_OK)
+        {
+            printf("error: unable to publish data on topic\n");
+            break;
+        }
+
+        //ztimer_sleep(ZTIMER_MSEC, 250);
+
+        if(emcute_pub(&t, messageReal, lenReal, flags) != EMCUTE_OK)
+        {
+            printf("error: unable to publish data on topic\n");
+            break;
+        }
+
         ztimer_sleep(ZTIMER_MSEC, 1500);
     }
     return 0;
