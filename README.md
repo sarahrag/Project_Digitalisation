@@ -1,6 +1,6 @@
 # Project Digitalisation: IoT - From the Microcontroller to the Cloud
 
-The objective of this project is to send data from an embedded sensor to a cloud service provided bei Amazon Web Services (AWS). The microcontrollers which are used in this tutorial are provided by by [FIT IoT-LAB](https://www.iot-lab.info/).
+The objective of this project is to send data from an embedded sensor to a cloud service provided bei Amazon Web Services (AWS). The microcontrollers which are used in this tutorial are provided by [FIT IoT-LAB](https://www.iot-lab.info/).
 
 ## Prerequisites
 In order to be able to reproduce this tutorial, you need an AWS account as well as an account for FIT IoT-LAB. Furthermore, it is highly recommended to reproduce the tutorial within a Linux based environment, since it was developed in Ubuntu version 22.04.
