@@ -25,7 +25,10 @@
 #define CONFIG_EMCUTE_DEFAULT_PORT    (1883U)
 #endif
 
+#define MAX_COUNT_VAL 100000.0
+
 static char stack[THREAD_STACKSIZE_DEFAULT];
+
 float currVal = 0.0;
 float counter = 0.0;
 
@@ -40,7 +43,14 @@ static int callback(void* arg)
 {
     (void)arg;
     currVal = 1.2 * sin(counter) + 30.0;
-    counter=counter+0.5;
+    if(counter < MAX_COUNT_VAL)
+    {
+        counter=counter+0.5;
+    }
+    else
+    {
+        counter = 0.0;
+    }
     return 0;
 }
 
@@ -88,14 +98,14 @@ int main(void)
         time_info=localtime(&current_time);
         strftime(timestring, sizeof(timestring), "%H:%M:%S", time_info);
 
-        // prepare fake data message
+        // prepare fake data message in json format
         sprintf(fakeLightMsg, "{\"Lux_ValueFake\": %.2f,  \"timestamp\": \"", currVal);
         sprintf(fakeLightMsg + strlen(fakeLightMsg), "%s", timestring);
         sprintf(fakeLightMsg + strlen(fakeLightMsg), "\"}");
         messageFake = fakeLightMsg;
         lenFake = strlen(messageFake);
 
-        // prepare real data message
+        // prepare real data message in json format
         sprintf(realMsg, "{\"AccelY\": %i, \"timestamp\": \"", acc_value.y_axis);
         sprintf(realMsg + strlen(realMsg), "%s", timestring);
         sprintf(realMsg + strlen(realMsg), "\"}");
