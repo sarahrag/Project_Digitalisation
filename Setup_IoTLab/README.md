@@ -8,7 +8,7 @@ sure you have cloned the whole GitHub repository to your local machine.
    files to your grenoble frontend. You have to provide your Fit Iot Lab 
    username.
 
-2. Connect to grenoble site via ssh with `<username>@grenoble.iot-lab.info`and 
+2. Connect to grenoble site via ssh with `ssh <username>@grenoble.iot-lab.info`and 
    check if all files are present by typing `ls`. Following files and folders 
    should be present:
 	- extractDevice.py
