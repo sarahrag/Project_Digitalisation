@@ -61,7 +61,7 @@ sure you have cloned the whole GitHub repository to your local machine.
    look like this:
    `inet6 addr: 2001:660:5307:3000::68/64 Scope:Global`
 
-7. Run the command "broker_mqtts A8/config.conf". This will start your broker
+7. Run the command `broker_mqtts A8/config.conf. This will start your broker
    which listens for UDP MQTT-SN messages on port 1885 and for TCP MQTT on
    port 1886.
    ```
