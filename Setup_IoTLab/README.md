@@ -101,14 +101,16 @@ sure you have cloned the whole GitHub repository to your local machine.
 9. Open a new terminal and connect to the grenoble frontend via ssh. And edit
    the main.c file in A8/riot/RIOT/examples/sensor_toCloud. Change the IPv6
    address in line 68 to the one you copied in step 6.
-   `ipv6_addr_from_str((ipv6_addr_t *)&gw.addr.ipv6, "2001:660:5307:3000::68");`
+   ```
+   ipv6_addr_from_str((ipv6_addr_t *)&gw.addr.ipv6, "2001:660:5307:3000::68");
+   ```
 
 10. While in the folder run command `source /opt/riot.source` and build the application
    command `make BOARD=iotlab-a8-m3`. Copy the file to the third in the list received 
    in step 5 by using command:
    ```
    scp bin/iotlab-a8-m3/sensor_toCloud.elf root@node-a8-NODENUMBER:
-   `
+   ```
 
 11. Connect to the node with `ssh root@node-a8-NODENUMBER` and flash the 
     binary using `flash_a8_m3 sensor_toCloud.elf`.
