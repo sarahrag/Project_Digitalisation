@@ -24,7 +24,7 @@ In this Project the AWS IoT Core MQTT Broker is used, so it has to be setted up 
 2. Under *Settings -> Device* data endpoint in AWS IoT Core the endpoint that is used for MQTT Clients is located. Copy the endpoint, because it has to be pasted in some files
 
 ### Setup Fit-IoT Lab environment
-The first part of the project is the setup of the Fit-IoT Lab environment, including the border router, the mosquitto RSMB, the application to send real and fake sensor data with the MQTT-SN Client and the selfmade gateway.
+The first part of the project is the setup of the Fit-IoT Lab environment, including the border router, the mosquitto "Really Small Message Broker" (RSMB), the application to send real and fake sensor data with the MQTT-SN Client and the selfmade gateway.
 For this part follow the instructions in the Readme.md in [Setup IoT Lab](https://github.com/sarahrag/Project_Digitalisation/tree/main/Setup_IoTLab)
 
 ### Setup subscriber
