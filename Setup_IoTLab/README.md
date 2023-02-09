@@ -100,7 +100,7 @@ sure you have cloned the whole GitHub repository to your local machine.
 
 9. Open a new terminal and connect to the grenoble frontend via ssh. And edit
    the main.c file in A8/riot/RIOT/examples/sensor_toCloud. Change the IPv6
-   address in line 68 to the one you copied in step 6.
+   address in line 78 to the one you copied in step 6.
    ```
    ipv6_addr_from_str((ipv6_addr_t *)&gw.addr.ipv6, "2001:660:5307:3000::68");
    ```
