@@ -119,7 +119,6 @@ int main(void)
                 printf("unable to connect\n");
                 break;
             }
-            //ztimer_sleep(ZTIMER_MSEC, 2000);
             firstRun = false;
         }
 
@@ -131,15 +130,11 @@ int main(void)
             puts("error: unable to obtain topic ID");
             break;
         }
-
         if(emcute_pub(&t, messageFake, lenFake, flags) != EMCUTE_OK)
         {
             printf("error: unable to publish data on topic\n");
             break;
         }
-
-        //ztimer_sleep(ZTIMER_MSEC, 250);
-
         if(emcute_pub(&t, messageReal, lenReal, flags) != EMCUTE_OK)
         {
             printf("error: unable to publish data on topic\n");
