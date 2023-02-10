@@ -10,7 +10,6 @@ from datetime import datetime
 from awscrt import mqtt
 from awsiot import mqtt_connection_builder
 
-
 ENDPOINT = "a3kkaneczqd2o-ats.iot.us-east-1.amazonaws.com"
 CLIENT_ID = "testclient"
 PATH_TO_CERTIFICATE = "certificates/certificate.pem.crt"
@@ -43,7 +42,7 @@ for i in range(20):
     print(json.dumps(MESSAGE))
     time.sleep(1)
 
-    MESSAGE = {"Lux_ValueReal": random.uniform(19.0, 21.0), "timestamp": datetime.now().strftime("%H:%M:%S")}
+    MESSAGE = {"AccelY": random.uniform(19.0, 21.0), "timestamp": datetime.now().strftime("%H:%M:%S")}
     mqtt_connection.publish(
         topic=TOPIC,
         payload=str(json.dumps(MESSAGE)),

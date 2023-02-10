@@ -17,22 +17,24 @@ TOPIC = "test/testing"
 
 TEMPERATURE = "temperature"
 TIMESTAMP = "timestamp"
-LUX = "Lux_Value"
-csv_header = [TIMESTAMP, LUX]
+LUX = "Lux_ValueFake"
+ACCELERATION = "AccelY"
+
+csv_header = [TIMESTAMP, "value"]
 
 DATAPOINTS_SHOWED = 30
 
 SHOW_PLOT = True
 
 
-def writeIn(path, payload_dict, LUX_Identifier):
+def writeIn(path, payload_dict, identifier):
     with open(path, 'a') as file:
         print("Save data in results.csv ...")
         # create the csv writer
         result_writer = csv.writer(file)
 
         timestamp = payload_dict[TIMESTAMP]
-        lux = payload_dict[LUX_Identifier]
+        lux = payload_dict[identifier]
 
         # write a row to the csv file
         result_writer.writerow([timestamp, lux])
@@ -47,10 +49,10 @@ def on_message_received(topic, payload, dup, qos, retain, **kwargs):
 
     payload_dict = json.loads(payload)
 
-    if LUX + "Real" in payload_dict:
-        writeIn('results/results_real.csv', payload_dict, LUX + "Real")
-    elif LUX + "Fake" in payload_dict:
-        writeIn('results/results_fake.csv', payload_dict, LUX + "Fake")
+    if ACCELERATION in payload_dict:
+        writeIn('results/results_real.csv', payload_dict, ACCELERATION)
+    elif LUX in payload_dict:
+        writeIn('results/results_fake.csv', payload_dict, LUX)
 
     if SHOW_PLOT:
         print("Show data ...")
@@ -62,26 +64,27 @@ def on_message_received(topic, payload, dup, qos, retain, **kwargs):
 
         # Fake data
         fake_data = pd.read_csv('results/results_fake.csv')
-        axis[0].plot(fake_data[TIMESTAMP][-DATAPOINTS_SHOWED:], fake_data[LUX][-DATAPOINTS_SHOWED:])
-        axis[0].scatter(fake_data[TIMESTAMP][-DATAPOINTS_SHOWED:], fake_data[LUX][-DATAPOINTS_SHOWED:])
+        axis[0].plot(fake_data[TIMESTAMP][-DATAPOINTS_SHOWED:], fake_data["value"][-DATAPOINTS_SHOWED:])
+        axis[0].scatter(fake_data[TIMESTAMP][-DATAPOINTS_SHOWED:], fake_data["value"][-DATAPOINTS_SHOWED:])
         axis[0].set_title("Fake data")
         axis[0].tick_params('x', labelrotation=45, labelsize="small")
         axis[0].tick_params('y', labelsize="small")
 
         # Real data
         real_data = pd.read_csv('results/results_real.csv')
-        axis[1].plot(real_data[TIMESTAMP][-DATAPOINTS_SHOWED:], real_data[LUX][-DATAPOINTS_SHOWED:])
-        axis[1].scatter(real_data[TIMESTAMP][-DATAPOINTS_SHOWED:], real_data[LUX][-DATAPOINTS_SHOWED:])
+        axis[1].plot(real_data[TIMESTAMP][-DATAPOINTS_SHOWED:], real_data["value"][-DATAPOINTS_SHOWED:])
+        axis[1].scatter(real_data[TIMESTAMP][-DATAPOINTS_SHOWED:], real_data["value"][-DATAPOINTS_SHOWED:])
         axis[1].set_title("Real data")
         axis[1].tick_params('x', labelrotation=45, labelsize="small")
         axis[1].tick_params('y', labelsize="small")
 
         # Set common labels
         figure.text(0.5, 0.04, 'Timestamp', ha='center', va='center')
-        figure.text(0.04, 0.5, 'Lux', ha='center', va='center', rotation='vertical')
+        figure.text(0.04, 0.25, 'Acceleration', ha='center', va='center', rotation='vertical')
+        figure.text(0.04, 0.75, 'Lux', ha='center', va='center', rotation='vertical')
 
         plt.tight_layout()
-        figure.subplots_adjust(bottom=0.2, left=0.1)
+        figure.subplots_adjust(bottom=0.2, left=0.15)
 
         plt.show()
 
