@@ -1,4 +1,3 @@
-/Subscriber/results/results.csv
 /Subscriber/certificates/certificate.pem.crt
 /Subscriber/certificates/private.pem.key
 /Subscriber/certificates/public.pem.key
@@ -8,3 +7,6 @@
 /Setup_IoTLab/certificates/private.pem.key
 /Setup_IoTLab/certificates/public.pem.key
 /Setup_IoTLab/certificates/root.pem
+
+/Subscriber/results/results_fake.csv
+/Subscriber/results/results_real.csv
