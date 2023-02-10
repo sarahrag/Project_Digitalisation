@@ -26,6 +26,10 @@ In this Project the AWS IoT Core MQTT Broker is used, so it has to be setted up 
      * `private.pem.key` (Private key)
      * `public.pem.key` (Public key)
      * `root.pem` (Root CA)
+
+   8. In both folders [Setup IoT Lab](https://github.com/sarahrag/Project_Digitalisation/tree/main/Setup_IoTLab)
+      and [Subscriber](https://github.com/sarahrag/Project_Digitalisation/tree/main/Subscriber) is a certificates
+      folder, where you should add the certificate, the private key and the root CA
 2. Under *Settings -> Device* data endpoint in AWS IoT Core the endpoint that is used for MQTT Clients is located. Copy the endpoint, because it has to be pasted in some files
 
 ### Setup FIT IoT-LAB environment
@@ -33,5 +37,7 @@ The first part of the project is the setup of the FIT IoT-LAB environment, inclu
 For this part follow the instructions in the Readme.md in [Setup IoT Lab](https://github.com/sarahrag/Project_Digitalisation/tree/main/Setup_IoTLab)
 
 ### Setup subscriber
-The second part of the project is the subscribing MQTT Client to receive the send data directly from AWS IoT Core, save them and (optionally) visualize them.
-For this part follow the instructions in the Readme.md in [Subscriber](https://github.com/sarahrag/Project_Digitalisation/tree/main/MQTT_Stuff)
+
+The second part of the project is the subscribing MQTT Client to receive the send data directly from AWS IoT Core, save
+them and (optionally) visualize them. For this part follow the instructions in the Readme.md
+in [Subscriber](https://github.com/sarahrag/Project_Digitalisation/tree/main/Subscriber)
