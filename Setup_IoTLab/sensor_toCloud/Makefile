@@ -1,5 +1,5 @@
 # name of your application
-APPLICATION = sensor_tocloud
+APPLICATION = sensor_toCloud
 
 # If no BOARD is found in the environment, use this default:
 BOARD ?= native
@@ -26,6 +26,8 @@ USEMODULE += ztimer_msec
 USEMODULE += ztimer_sec
 USEMODULE += ztimer_usec
 USEMODULE += printf_float
+
+USEMODULE += lsm303dlhc
 # Allow for env-var-based override of the nodes name (EMCUTE_ID)
 ifneq (,$(EMCUTE_ID))
   CFLAGS += -DEMCUTE_ID=\"$(EMCUTE_ID)\"
@@ -35,10 +37,6 @@ endif
 # which is not needed in a production environment but helps in the
 # development process:
 DEVELHELP ?= 1
-
-# Comment this out to join RPL DODAGs even if DIOs do not contain
-# DODAG Configuration Options (see the doc for more info)
-# CFLAGS += -DCONFIG_GNRC_RPL_DODAG_CONF_OPTIONAL_ON_JOIN
 
 # Change this to 0 show compiler invocation lines by default:
 QUIET ?= 1
