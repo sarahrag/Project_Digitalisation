@@ -1,5 +1,10 @@
-/MQTT_Stuff/results/results.csv
-/MQTT_Stuff/certificates/certificate.pem.crt
-/MQTT_Stuff/certificates/private.pem.key
-/MQTT_Stuff/certificates/public.pem.key
-/MQTT_Stuff/certificates/root.pem
+/Subscriber/results/results.csv
+/Subscriber/certificates/certificate.pem.crt
+/Subscriber/certificates/private.pem.key
+/Subscriber/certificates/public.pem.key
+/Subscriber/certificates/root.pem
+
+/Setup_IoTLab/certificates/certificate.pem.crt
+/Setup_IoTLab/certificates/private.pem.key
+/Setup_IoTLab/certificates/public.pem.key
+/Setup_IoTLab/certificates/root.pem

@@ -1,0 +1,6 @@
+Placeholder file so the folder is created.
+In this folder these individual certificates should be added:
+- certificate.pem.crt
+- private.pem.key
+- public.pem.key (optionally)
+- root.pem
